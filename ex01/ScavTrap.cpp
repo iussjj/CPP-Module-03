@@ -64,9 +64,41 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &source)
 
 ScavTrap::~ScavTrap() //no initialization list needed!
 {
-	std::cout	<< "Scavtrap " << this->_name
+	std::cout	<< "ScavTrap " << this->_name
 				<< " destroyed!" << std::endl;
 	//after this destructor runs, the parent destructor runs automatically
 }
 
-ScavTrap::
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
+	std::cout	<< "ScavTrap " << name
+				<< " created!" << std::endl;
+	this->_name = name;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+}
+void	ScavTrap::attack(const std::string& target)
+{
+	if (this->_canAct("ScavTrap", "attack"))
+	{
+		this->_energyPoints--;
+		std::cout 	<< "ScavTrap " << this->_name
+					<< " attacks " << target
+					<< " causing " << this->_attackDamage
+					<< " points of damage!\n" 
+					<< "It now has " << this->_energyPoints
+					<< " energy points remaining." << std::endl;
+	}
+}
+
+void	ScavTrap::guardGate(void)
+{
+	if (this->_canAct("ScavTrap", "enter Gate keeper mode"))
+	{
+		std::cout 	<< "ScavTrap " << this->_name
+			<< " enters Gate keeper mode."
+			<< std::endl;
+	}
+}
+
