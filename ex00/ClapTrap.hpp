@@ -10,12 +10,12 @@
 
 class ClapTrap
 {
-protected:
+private:
 	std::string	_name;
 	int			_hitPoints;
 	int			_energyPoints;
 	int			_attackDamage;
-	bool		_canAct(std::string type, std::string action) const;
+	bool		_canAct(std::string action) const;
 
 public:
 	//Orthodox Canonical Form

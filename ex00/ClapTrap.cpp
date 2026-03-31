@@ -31,13 +31,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &source)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout	<< "Claptrap " << this->_name
+	std::cout	<< "ClapTrap " << this->_name
 				<< " destroyed!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout	<< "Claptrap " << name
+	std::cout	<< "ClapTrap " << name
 				<< " created!" << std::endl;
 	this->_name = name;
 	this->_hitPoints = 10;
@@ -45,18 +45,18 @@ ClapTrap::ClapTrap(std::string name)
 	this->_attackDamage = 0;
 }
 
-bool	ClapTrap::_canAct(std::string type, std::string action) const
+bool	ClapTrap::_canAct(std::string action) const
 {
 	if (this->_hitPoints <= 0)
 	{
-		std::cout	<< type << " " << this->_name
+		std::cout	<< "ClapTrap " << this->_name
 					<< " is dead and can't "
 					<< action << "!" << std::endl;
 		return false;
 	}
 	if (this->_energyPoints <= 0)
 	{
-		std::cout	<< type << " " << this->_name
+		std::cout	<< "ClapTrap " << this->_name
 					<< " is out of energy and can't " 
 					<< action << "!" << std::endl;
 		return false;
@@ -66,10 +66,10 @@ bool	ClapTrap::_canAct(std::string type, std::string action) const
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (this->_canAct("Claptrap", "attack"))
+	if (this->_canAct("attack"))
 	{
 		this->_energyPoints--;
-		std::cout 	<< "Claptrap " << this->_name
+		std::cout 	<< "ClapTrap " << this->_name
 					<< " attacks " << target
 					<< " causing " << this->_attackDamage
 					<< " points of damage!\n" 
@@ -88,7 +88,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints -= amount;
 	}
 
-	std::cout	<< "Claptrap " << this->_name
+	std::cout	<< "ClapTrap " << this->_name
 				<< " takes " << amount
 				<< " points of damage!\n" 
 				<< "It now has " << this->_hitPoints
@@ -97,11 +97,11 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-		if (this->_canAct("Claptrap", "be repaired"))
+		if (this->_canAct("be repaired"))
 		{
 			this->_energyPoints--;
 			this->_hitPoints += amount;
-			std::cout 	<< "Claptrap " << this->_name
+			std::cout 	<< "ClapTrap " << this->_name
 						<< " repairs itself and regains "
 						<< amount << " hit points!\n"
 						<< "Hit points now: " << this->_hitPoints << '\n'
