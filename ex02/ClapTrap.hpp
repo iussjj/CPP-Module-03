@@ -22,7 +22,7 @@ public:
 	ClapTrap();
 	ClapTrap(const ClapTrap &source);
 	ClapTrap &operator=(const ClapTrap &source);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	//Parametrized constructor
 	ClapTrap(std::string name);
